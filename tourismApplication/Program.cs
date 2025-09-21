@@ -2,6 +2,7 @@
 using tourismApplication.Models;
 using tourismApplication.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(o =>
@@ -11,12 +12,20 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<TourJsonService>();
 
 
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();   
+    // Apply database migrations if any
+    if (db.Database.GetPendingMigrations().Any())
+    {
+        db.Database.Migrate();
+    }
+    //db.Database.EnsureCreated();
+    
 }
 
 app.UseStaticFiles();
