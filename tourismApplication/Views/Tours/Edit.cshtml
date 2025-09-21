@@ -1,0 +1,121 @@
+﻿@model tourismApplication.Models.Tour
+@{
+    ViewData["Title"] = "Edit Tour";
+    var locs = ViewBag.Locations as IEnumerable<dynamic>;
+}
+
+<h2>Edit Tour</h2>
+
+<form asp-action="Edit" id="plannerForm">
+    <!-- Hidden fields -->
+    <input type="hidden" asp-for="TourId" />
+    <input type="hidden" asp-for="Title" id="hiddenTitle" />
+    <input type="hidden" asp-for="PricePerDay" id="pricePerDay" />
+
+    <div class="mb-3">
+        <label class="form-label">Location</label>
+        <select id="location" class="form-select">
+            <option value="">-- Select a location --</option>
+            @foreach (var l in (locs ?? Enumerable.Empty<dynamic>()))
+            {
+                var selected = l.Name == Model.Title ? "selected" : "";
+                <option value="@l.Name"
+                        data-price="@l.PricePerDay"
+                        data-limit="@l.GroupLimit"
+                        data-from="@l.From.ToString("yyyy-MM-dd")"
+                        data-to="@l.To.ToString("yyyy-MM-dd")"
+                        selected="@(l.Name == Model.Title ? "selected" : null)">
+                    @l.Name (@l.PricePerDay.ToString("C")/day, limit @l.GroupLimit)
+                </option>
+
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AvailableFrom" class="form-label"></label>
+        <input asp-for="AvailableFrom" type="date" class="form-control" id="from" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AvailableTo" class="form-label"></label>
+        <input asp-for="AvailableTo" type="date" class="form-control" id="to" />
+    </div>
+
+    @* //IMG *@
+    <div class="mb-3">
+        <label asp-for="ImageUrl" class="form-label">Tour Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" placeholder="Enter image URL" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="PeopleCount" class="form-label"></label>
+        <input asp-for="PeopleCount" class="form-control" id="people" type="number" min="1" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DurationDays" class="form-label"></label>
+        <input asp-for="DurationDays" class="form-control" id="days" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" id="totalPrice" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="GroupSizeLimit" class="form-label"></label>
+        <input asp-for="GroupSizeLimit" class="form-control" id="limit" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const sel = document.getElementById('location');
+        const from = document.getElementById('from');
+        const to   = document.getElementById('to');
+        const people = document.getElementById('people');
+        const days = document.getElementById('days');
+        const totalPrice = document.getElementById('totalPrice');
+        const limit = document.getElementById('limit');
+        const hiddenTitle = document.getElementById('hiddenTitle');
+        const pricePerDayInput = document.getElementById('pricePerDay');
+
+        function diffDays(a, b){
+          if(!a || !b) return 0;
+          const ms = (new Date(b)) - (new Date(a));
+          return Math.floor(ms / (1000*60*60*24)) + 1;
+        }
+
+        function calc(){
+          const opt = sel.options[sel.selectedIndex];
+          const loc = opt?.value || '';
+          const pricePerDay = parseFloat(opt?.dataset.price || '0');
+          const max = parseInt(opt?.dataset.limit || '0');
+
+          hiddenTitle.value = loc;
+          pricePerDayInput.value = pricePerDay || 0;
+          limit.value = max || '';
+
+          const d = diffDays(from.value, to.value);
+          days.value = d > 0 ? d : '';
+
+          const count = parseInt(people.value || '0');
+          const total = (d > 0 && count > 0) ? (pricePerDay * d * count) : 0;
+          totalPrice.value = total.toFixed(2);
+        }
+
+        sel.addEventListener('change', calc);
+        from.addEventListener('change', calc);
+        to.addEventListener('change', calc);
+        people.addEventListener('input', calc);
+
+        window.onload = calc;
+    </script>
+}

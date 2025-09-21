@@ -1,0 +1,57 @@
+﻿@model tourismApplication.Models.Tour
+@{
+    ViewData["Title"] = "Tour Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm mb-4">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <img src="@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Title" style="height:100%; object-fit:cover;">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Title</h2>
+                    <p class="card-text">@Model.Description</p>
+
+                    <dl class="row mt-4">
+                        <dt class="col-sm-4">Duration</dt>
+                        <dd class="col-sm-8">@Model.DurationDays day(s)</dd>
+
+                        <dt class="col-sm-4">Dates</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary me-1">
+                                <i class="bi bi-calendar-event me-1"></i>
+                                @Model.AvailableFrom.ToString("dd MMM yyyy")
+                            </span>
+                            <span class="me-1">–</span>
+                            <span class="badge bg-success">
+                                <i class="bi bi-calendar-event me-1"></i>
+                                @Model.AvailableTo.ToString("dd MMM yyyy")
+                            </span>
+                        </dd>
+
+
+
+                        <dt class="col-sm-4">Price / Person / Day</dt>
+                        <dd class="col-sm-8">@Model.PricePerDay $</dd>
+
+                        <dt class="col-sm-4">Total Price</dt>
+                        <dd class="col-sm-8">@Model.Price $</dd>
+
+                        <dt class="col-sm-4">People</dt>
+                        <dd class="col-sm-8">@Model.PeopleCount</dd>
+
+                        <dt class="col-sm-4">Group Limit</dt>
+                        <dd class="col-sm-8">@Model.GroupSizeLimit</dd>
+                    </dl>
+
+                    <div class="mt-4">
+                        <a asp-action="Edit" asp-route-id="@Model.TourId" class="btn btn-primary me-2">Edit</a>
+                        <a asp-action="Index" class="btn btn-secondary">Back to Tours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

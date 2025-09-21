@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Tourism App";
+}
+
+<div class="container mt-5">
+
+    <!-- Hero Section -->
+    @* <div class="jumbotron text-center bg-light p-5 rounded shadow-sm">
+        <h1 class="display-4">Explore Amazing Tours!</h1>
+        <p class="lead">Plan your next adventure with us. Discover exciting destinations across Australia.</p>
+        <a asp-controller="Tours" asp-action="Index" class="btn btn-primary btn-lg mt-3">View Tours</a>
+    </div> *@
+
+    <!-- Hero Section -->
+    @{
+        ViewData["Title"] = "Home";
+    }
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center justify-content-center text-center" style="
+        background: url('https://silversea-discover.imgix.net/2023/01/sydney_1580548351.jpg?auto=compress%2Cformat&ixlib=php-3.3.1') no-repeat center center;
+        background-size: cover;
+        height: 80vh;
+        position: relative;
+    ">
+        <div class="overlay" style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5); /* semi-transparent overlay */
+        ">
+        </div>
+
+        <div class="hero-content text-white position-relative">
+            <h1 class="display-4 fw-bold">Explore Australia With Us!</h1>
+            <p class="lead mb-4">Plan your perfect tour, choose locations, and enjoy unforgettable experiences.</p>
+            <a asp-controller="Tours" asp-action="Index" class="btn btn-primary btn-lg">View Tours</a>
+        </div>
+    </section>
+
+    <!-- Optional Feature Section -->
+    <div class="container my-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Easy Planning</h5>
+                        <p class="card-text">Select your favorite locations and create a custom tour quickly and easily.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Affordable Prices</h5>
+                        <p class="card-text">Enjoy transparent pricing per person per day and calculate your total cost instantly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Flexible Dates</h5>
+                        <p class="card-text">Choose your preferred dates and group size for a personalized tour experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About / Info Section -->
+    <div class="row mt-5 align-items-center">
+        <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+                 alt="Travel" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6">
+            <h2>Why Choose Us?</h2>
+            <p>
+                We offer carefully curated tours with flexible schedules and competitive pricing.
+                Experience the beauty of Australia while enjoying a stress-free travel planning process.
+            </p>
+            <ul>
+                <li>Personalized tour packages</li>
+                <li>Group and solo options</li>
+                <li>Transparent pricing</li>
+                <li>Easy booking system</li>
+            </ul>
+            <a asp-controller="Tours" asp-action="Create" class="btn btn-outline-primary mt-2">Plan Your Tour</a>
+        </div>
+    </div>
+
+    <!-- Featured Tours Section -->
+    <div class="mt-5">
+        <h2 class="mb-4 text-center">Featured Tours</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @* Example cards; you can replace with Model if passing tours *@
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://media.timeout.com/images/106087711/image.jpg"
+                         class="card-img-top" style="height:180px; object-fit:cover;" alt="Tour Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Sydney City Tour</h5>
+                        <p class="card-text">Experience the vibrant city life of Sydney with guided tours and local attractions.</p>
+                        <a asp-controller="Tours" asp-action="Index" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://assets.atdw-online.com.au/images/95cf328a09bc44309f82a1983dc50e57.jpeg?rect=270%2C0%2C2653%2C1990&w=1600&h=1200&&rot=360&q=eyJ0eXBlIjoibGlzdGluZyIsImxpc3RpbmdJZCI6IjVhNTQxMjkzMDg0MWRjNjQyZDljZTdjZCIsImRpc3RyaWJ1dG9ySWQiOiI1NmIxZWI5MzQ0ZmVjYTNkZjJlMzIwYzgiLCJhcGlrZXlJZCI6IjU2YjFlZTU5MGNmMjEzYWQyMGRjNTgxOSIsInNlcnZpY2VJZCI6IjVhNTQxMzdiNmYxNTkyZTA1NGI1OTAzZCJ9?w=1600&h=1200&fm=jpg"
+                         class="card-img-top" style="height:180px; object-fit:cover;" alt="Tour Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Blue Mountains</h5>
+                        <p class="card-text">Enjoy breathtaking views and nature walks in the beautiful Blue Mountains.</p>
+                        <a asp-controller="Tours" asp-action="Index" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://cdn.greatoceanroadmelbournetours.com.au/wp-content/uploads/2024/11/Great-Ocean-Road-Tours-from-95-Great-Ocean-Road-Day-Trips-from-Melbourne-2.jpg"
+                         class="card-img-top" style="height:180px; object-fit:cover;" alt="Tour Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Great Ocean Road</h5>
+                        <p class="card-text">Take a scenic drive along the Great Ocean Road and witness stunning coastal views.</p>
+                        <a asp-controller="Tours" asp-action="Index" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

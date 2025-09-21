@@ -1,0 +1,59 @@
+﻿@model tourismApplication.Models.Agency
+
+@{
+    ViewData["Title"] = "Agency Details";
+}
+
+<div class="mb-4">
+    <h2 class="fw-bold">@Model.Name</h2>
+    <p>@Model.Description</p>
+    <a asp-action="Edit" asp-route-id="@Model.AgencyId" class="btn btn-sm btn-outline-success me-2">
+        <i class="bi bi-pencil"></i> Edit
+    </a>
+    <a asp-action="Index" class="btn btn-sm btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Back to list
+    </a>
+</div>
+
+<h3 class="mt-5 mb-3">Tours Offered</h3>
+
+<div class="col">
+@*     <div class="card h-100 shadow-sm">
+        @if (!string.IsNullOrEmpty(t.ImageUrl))
+        {
+            <img src="@t.ImageUrl" class="card-img-top" style="height:180px; object-fit:cover;" alt="Tour Image" />
+        }
+        <div class="card-body">
+            <h5 class="card-title">@t.Title</h5>
+            <p class="card-text">
+                <strong>Duration:</strong> @t.DurationDays day(s) <br />
+                <strong>Dates:</strong>
+                <span class="badge bg-primary me-1">
+                    <i class="bi bi-calendar-event me-1"></i>
+                    @t.AvailableFrom.ToString("dd MMM yyyy")
+                </span>
+                <span class="badge bg-success">
+                    <i class="bi bi-calendar-event me-1"></i>
+                    @t.AvailableTo.ToString("dd MMM yyyy")
+                </span>
+                <br />
+                <strong>People:</strong> @t.PeopleCount <br />
+                <strong>Price:</strong> @t.Price.ToString("C")
+            </p>
+            <a asp-controller="Tours" asp-action="Details" asp-route-id="@t.TourId" class="btn btn-sm btn-primary">
+                View Details
+            </a>
+        </div>
+    </div>
+</div> *@
+
+
+    <p class="text-muted">No tours available for this agency yet.</p>
+
+<style>
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+</style>
+

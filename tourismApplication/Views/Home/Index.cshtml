@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center justify-content-center text-center" style="
+        background: url('https://silversea-discover.imgix.net/2023/01/sydney_1580548351.jpg?auto=compress%2Cformat&ixlib=php-3.3.1') center/cover no-repeat;
+        height: 100vh;
+        position: relative;
+    ">
+    <div class="overlay" style="
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,0.6);
+        "></div>
+
+    <div class="content position-relative text-white px-3">
+        <h1 class="display-3 fw-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Explore Australia Your Way</h1>
+        <p class="lead mb-5" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.5);">Choose your adventure or manage your agency.</p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+            <a asp-controller="Home" asp-action="Landing" class="btn btn-primary btn-lg shadow-lg px-5 py-3" style="transition: transform 0.2s;">
+                <i class="bi bi-geo-alt-fill me-2"></i> Tour Packages
+            </a>
+            <a asp-controller="Agencies" asp-action="Login" class="btn btn-outline-light btn-lg shadow-lg px-5 py-3" style="transition: transform 0.2s;">
+                <i class="bi bi-person-fill me-2"></i> Agency Login
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .hover-scale:hover {
+        transform: translateY(-5px) scale(1.03);
+        transition: transform 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+
+    .hero .btn i {
+        vertical-align: middle;
+    }
+</style>

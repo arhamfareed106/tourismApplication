@@ -1,0 +1,54 @@
+[
+  {
+    "TourId": 101,
+    "Title": "Sydney Opera House Experience",
+    "Description": "A guided tour exploring Sydney�s iconic Opera House and Circular Quay.",
+    "DurationDays": 3,
+    "AvailableFrom": "2025-10-01",
+    "AvailableTo": "2025-12-31",
+    "PeopleCount": 20,
+    "PricePerDay": 150,
+    "Price": 720,
+    "GroupSizeLimit": 25,
+    "ImageUrl": "https://i0.wp.com/dancemagazine.com.au/wp-content/uploads/2018/06/Sydney-Opera-House.jpg?fit=800%2C533&ssl=1"
+  },
+  {
+    "TourId": 102,
+    "Title": "Blue Mountains Adventure",
+    "Description": "Discover breathtaking views, waterfalls, and wildlife in the Blue Mountains.",
+    "DurationDays": 2,
+    "AvailableFrom": "2025-09-20",
+    "AvailableTo": "2026-01-15",
+    "PeopleCount": 15,
+    "PricePerDay": 120,
+    "Price": 600,
+    "GroupSizeLimit": 20,
+    "ImageUrl": "https://www.cphawkesburyvalley.com.au/wp-content/uploads/2023/06/Header-1.jpg"
+  },
+  {
+    "TourId": 103,
+    "Title": "Great Ocean Road",
+    "Description": "Take a scenic drive along the Great Ocean Road and witness stunning coastal views.",
+    "DurationDays": 4,
+    "AvailableFrom": "2025-11-01",
+    "AvailableTo": "2026-03-31",
+    "PeopleCount": 10,
+    "PricePerDay": 300,
+    "Price": 720,
+    "GroupSizeLimit": 15,
+    "ImageUrl": "https://cdn.greatoceanroadmelbournetours.com.au/wp-content/uploads/2024/11/Great-Ocean-Road-Tours-from-95-Great-Ocean-Road-Day-Trips-from-Melbourne-2.jpg"
+  },
+  {
+    "TourId": 104,
+    "Title": "Melbourne City Highlights",
+    "Description": "Explore laneways, museums, and the famous Melbourne nightlife.",
+    "DurationDays": 2,
+    "AvailableFrom": "2025-10-05",
+    "AvailableTo": "2026-04-01",
+    "PeopleCount": 30,
+    "PricePerDay": 100,
+    "Price": 200,
+    "GroupSizeLimit": 35,
+    "ImageUrl": "https://www.aeccglobal.com/images/easyblog_articles/112/b2ap3_large_8-Optimized-shutterstock_274387127.jpg"
+  }
+]

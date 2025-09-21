@@ -1,0 +1,41 @@
+﻿@model IEnumerable<tourismApplication.Models.Tour>
+
+<h2 class="mb-4">Available Tours</h2>
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">Plan New Tour</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var t in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                @if (!string.IsNullOrEmpty(t.ImageUrl))
+                {
+                    <img src="@t.ImageUrl" class="card-img-top" style="height:180px; object-fit:cover;" alt="Tour Image" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@t.Title</h5>
+                    <p class="card-text">
+                        <strong>Duration:</strong> @t.DurationDays day(s) <br />
+                        <strong>Dates:</strong>
+                        <span class="badge bg-primary me-1">
+                            <i class="bi bi-calendar-event me-1"></i>
+                            @t.AvailableFrom.ToString("dd MMM yyyy")
+                        </span>
+                        <span class="badge bg-success">
+                            <i class="bi bi-calendar-event me-1"></i>
+                            @t.AvailableTo.ToString("dd MMM yyyy")
+                        </span>
+                        <br />
+                        <strong>People:</strong> @t.PeopleCount <br />
+                        <strong>Price:</strong> @t.Price.ToString("C")
+                    </p>
+
+                    <a asp-action="Details" asp-route-id="@t.TourId" class="btn btn-sm btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
